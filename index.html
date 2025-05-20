@@ -1,0 +1,716 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html lang="id">
+ <head> 
+  <meta charset="utf-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"> 
+  <link href="https://m-asento.com/public/css/home.ecc31d34.css" rel="prefetch"> 
+  <link href="https://m-asento.com/public/css/app.bd822123.css" rel="preload" as="style"> 
+  <link href="https://m-asento.com/public/css/chunk-vendors.331f546b.css" rel="stylesheet"> 
+  <title>Market Today - Rumah</title> 
+  <style>
+    /* Reset & Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background-color: #f5f6fa;
+      color: #2f3640;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      max-width: 480px;
+      margin: auto;
+      padding: 1rem;
+      padding-bottom: 4rem; /* ruang untuk nav bawah */
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #e84118;
+    }
+
+    .user-profile {
+      width: 40px;
+      height: 40px;
+      background: #ccc;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+
+    .banner {
+      background: linear-gradient(135deg, #e84118, #fbc518);
+      color: white;
+      padding: 1rem;
+      border-radius: 12px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .banner h2 {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    .banner p {
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+    }
+
+    .banner::after {
+      content: '';
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      width: 80px;
+      height: 80px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 50%;
+      filter: blur(20px);
+    }
+
+    /* Tabs */
+    .product-tabs {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 1rem;
+    }
+
+    .tab-btn {
+      flex: 1;
+      background: none;
+      border: none;
+      font-weight: bold;
+      padding: 0.75rem;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      color: #666;
+    }
+
+    .tab-btn.active {
+      color: #e84118;
+      border-bottom: 2px solid #e84118;
+    }
+
+    /* Cards */
+    .cards {
+      margin-top: 1rem;
+      display: grid;
+      gap: 1rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 0.8rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      transition: transform 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+    }
+
+    .card h3 {
+      font-size: 1rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+.card .price {
+  font-size: 1.2rem;
+  color: #e84118;
+  font-weight: bold;
+  text-align: left;
+  display: block;
+  width: 100%;
+}
+
+    .
+
+    .card ul {
+      list-style: none;
+      margin-top: 0.75rem;
+      font-size: 0.85rem;
+      color: #666;
+    }
+
+    .card ul li {
+      margin-bottom: 0.3rem;
+    }
+
+    .card button {
+      width: 100%;
+      background: #e84118;
+      color: white;
+      border: none;
+      padding: 0.30rem;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      margin-top: 0.8rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .card button:hover {
+      background: #d63031;
+    }
+
+    /* Footer Navigation */
+    nav.footer-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: white;
+      display: flex;
+      justify-content: space-around;
+      padding: 0.65rem 0;
+      box-shadow: 0 -1px 10px rgba(0,0,0,0.05);
+    }
+
+    nav.footer-nav a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      color: #666;
+    }
+
+    nav.footer-nav a.active {
+      color: #e84118;
+      font-weight: bold;
+    }
+
+    nav.footer-nav svg {
+      width: 24px;
+      height: 24px;
+      fill: currentColor;
+      margin-bottom: 0.25rem;
+    }
+
+    @media (min-width: 600px) {
+      .container {
+        padding: 2rem;
+      }
+    }
+
+    button.locked {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+
+    button.locked:hover {
+      background: #ccc;
+    }
+
+
+  </style> 
+  <link rel="preload" as="script" href="https://m-asento.com/public/msg/notifIt.js">
+  <link rel="preload" as="script" href="https://code.jquery.com/jquery-1.11.3.min.js">
+  <link rel="preload" as="script" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+ </head> 
+ <body> 
+  <div class="container"> 
+   <!-- Header --> 
+   <header> 
+    <div class="logo">
+     <h2>Market Today</h2>
+
+    </div> 
+   </header> 
+   <!-- Banner --> 
+   <div class="banner"> 
+    <h2> Market Today Investasi Masa Depan</h2> 
+    <p>Jangka panjang Penghasilan harian otomatis masuk ke Saldo tersedia 1x24 jam!</p> 
+   </div> 
+   
+  
+
+
+  
+
+  
+Rp <b class="teks-besar">10,000</b>
+
+<style>
+  .teks-besar {
+    font-size: 25px;
+    color: #727272;
+  }
+</style>
+
+
+  <p></p>
+    <span>Saldo tersedia</span>
+
+   <!-- Tabs --> 
+   <div class="product-tabs"> 
+    <button class="tab-btn active" data-tab="produk">Paling Populer</button> 
+    <button class="tab-btn" data-tab="produk-premium">Sedang berjalan</button> 
+   </div> 
+   <!-- Tab Content --> 
+   <div id="produk" class="tab-content active cards product-section"> 
+    <div class="card" style="display: flex; gap: 12px; margin-bottom: 14px; padding: 8px; border: 1px solid #ddd; border-radius: 8px; align-items: center;"> 
+     <!-- Gambar Produk --> 
+     <div class="image" style="flex-shrink: 0;"> 
+      <img src="Market.jpg" alt="Produk" style="width: 55px; height: 80px; object-fit: cover; border-radius: 6px;"> 
+     </div> 
+     <!-- Detail Produk --> 
+     <div class="content" style="flex-grow: 1;"> 
+      <div class="price" style="font-size: 0.95rem; color: #e84118; font-weight: bold; text-align: left; margin-bottom: 4px;">
+       Rp50,000
+      </div> 
+      <ul style="padding-left: 18px; margin: 0 0 6px 0; font-size: 0.85rem; line-height: 1.2;"> 
+       <li>Pendapatan harian: Rp10,000</li> 
+       <li>Total: Rp400,000</li> 
+       <li>Durasi: 40 hari</li> 
+      </ul> 
+      <button class="btn" style="background-color: #ff7f50; font-size: 0.8rem; color: white; padding: 0.1px 1px; border: none; border-radius: 1px; cursor: pointer;" onclick="if (!window.__cfRLUnblockHandlers) return false; location.href='https://m-asento.com/purchase/confirmation/24'"><button class="btn-loading">Beli Sekarang</button></button> 
+     </div> 
+    </div> 
+    <div class="card" style="display: flex; gap: 12px; margin-bottom: 14px; padding: 8px; border: 1px solid #ddd; border-radius: 8px; align-items: center;"> 
+     <!-- Gambar Produk --> 
+     <div class="image" style="flex-shrink: 0;"> 
+      <img src="Market.jpg" alt="Produk" style="width: 55px; height: 80px; object-fit: cover; border-radius: 6px;"> 
+     </div> 
+     <!-- Detail Produk --> 
+     <div class="content" style="flex-grow: 1;"> 
+      <div class="price" style="font-size: 0.95rem; color: #e84118; font-weight: bold; text-align: left; margin-bottom: 4px;">
+        Rp100,000
+      </div> 
+      <ul style="padding-left: 18px; margin: 0 0 6px 0; font-size: 0.85rem; line-height: 1.2;"> 
+       <li>Pendapatan harian: Rp15,000</li> 
+       <li>Total: Rp600,000</li> 
+       <li>Durasi: 40 hari</li> 
+      </ul> 
+      <button class="btn" style="background-color: #ff7f50; font-size: 0.8rem; color: white; padding: 0.1px 12px; border: none; border-radius: 4px; cursor: pointer;" onclick="if (!window.__cfRLUnblockHandlers) return false; location.href='https://m-asento.com/purchase/confirmation/25'"><button class="btn-loading">Beli Sekarang</button></button> 
+     </div> 
+    </div> 
+    <div class="card" style="display: flex; gap: 12px; margin-bottom: 14px; padding: 8px; border: 1px solid #ddd; border-radius: 8px; align-items: center;"> 
+     <!-- Gambar Produk --> 
+     <div class="image" style="flex-shrink: 0;"> 
+      <img src="Market.jpg" alt="Produk" style="width: 55px; height: 80px; object-fit: cover; border-radius: 6px;"> 
+     </div> 
+     <!-- Detail Produk --> 
+     <div class="content" style="flex-grow: 1;"> 
+      <div class="price" style="font-size: 0.95rem; color: #e84118; font-weight: bold; text-align: left; margin-bottom: 4px;">
+        Rp150,000.00 
+      </div> 
+      <ul style="padding-left: 18px; margin: 0 0 6px 0; font-size: 0.85rem; line-height: 1.2;"> 
+       <li>Pendapatan harian: Rp20,000</li> 
+       <li>Total: Rp800,000</li> 
+       <li>Durasi: 40 hari</li> 
+      </ul> 
+      <button class="btn" style="background-color: #ff7f50; font-size: 0.8rem; color: white; padding: 0.1px 12px; border: none; border-radius: 4px; cursor: pointer;" onclick="if (!window.__cfRLUnblockHandlers) return false; location.href='https://m-asento.com/purchase/confirmation/26'"><button class="btn-loading">Beli Sekarang</button></button> 
+     </div> 
+    </div> 
+    <div class="card" style="display: flex; gap: 12px; margin-bottom: 14px; padding: 8px; border: 1px solid #ddd; border-radius: 8px; align-items: center;"> 
+     <!-- Gambar Produk --> 
+     <div class="image" style="flex-shrink: 0;"> 
+      <img src="Market.jpg" alt="Produk" style="width: 55px; height: 80px; object-fit: cover; border-radius: 6px;"> 
+     </div> 
+     <!-- Detail Produk --> 
+     <div class="content" style="flex-grow: 1;"> 
+      <div class="price" style="font-size: 0.95rem; color: #e84118; font-weight: bold; text-align: left; margin-bottom: 4px;">
+        Rp250,000.00 
+      </div> 
+      <ul style="padding-left: 18px; margin: 0 0 6px 0; font-size: 0.85rem; line-height: 1.2;"> 
+       <li>Pendapatan harian: Rp25,000</li> 
+       <li>Total: Rp1,000,000</li> 
+       <li>Durasi: 40 hari</li> 
+      </ul> 
+      <button class="btn" style="background-color: #ff7f50; font-size: 0.8rem; color: white; padding: 0.1px 12px; border: none; border-radius: 4px; cursor: pointer;" onclick="if (!window.__cfRLUnblockHandlers) return false; location.href='https://m-asento.com/purchase/confirmation/27'"><button class="btn-loading">Beli Sekarang</button></button> 
+     </div> 
+    </div> 
+    <div class="card" style="display: flex; gap: 12px; margin-bottom: 14px; padding: 8px; border: 1px solid #ddd; border-radius: 8px; align-items: center;"> 
+     <!-- Gambar Produk --> 
+     <div class="image" style="flex-shrink: 0;"> 
+      <img src="Market.jpg" alt="Produk" style="width: 55px; height: 80px; object-fit: cover; border-radius: 6px;"> 
+     </div> 
+     <!-- Detail Produk --> 
+     <div class="content" style="flex-grow: 1;"> 
+      <div class="price" style="font-size: 0.95rem; color: #e84118; font-weight: bold; text-align: left; margin-bottom: 4px;">
+        Rp300,000
+      </div> 
+      <ul style="padding-left: 18px; margin: 0 0 6px 0; font-size: 0.85rem; line-height: 1.2;"> 
+       <li>Pendapatan harian: Rp35,000</li> 
+       <li>Total: Rp1,400,000</li> 
+       <li>Durasi: 40 hari</li> 
+      </ul> 
+      <button class="btn" style="background-color: #ff7f50; font-size: 0.8rem; color: white; padding: 0.1px 12px; border: none; border-radius: 4px; cursor: pointer;" onclick="if (!window.__cfRLUnblockHandlers) return false; location.href='https://m-asento.com/purchase/confirmation/63'"><button class="btn-loading">Beli Sekarang</button></button> 
+     </div> 
+    </div> 
+    <div class="card" style="display: flex; gap: 12px; margin-bottom: 14px; padding: 8px; border: 1px solid #ddd; border-radius: 8px; align-items: center;"> 
+     <!-- Gambar Produk --> 
+     <div class="image" style="flex-shrink: 0;"> 
+      <img src="Market.jpg" alt="Produk" style="width: 55px; height: 80px; object-fit: cover; border-radius: 6px;"> 
+     </div> 
+     <!-- Detail Produk --> 
+     <div class="content" style="flex-grow: 1;"> 
+      <div class="price" style="font-size: 0.95rem; color: #e84118; font-weight: bold; text-align: left; margin-bottom: 4px;">
+        Rp500,000
+      </div> 
+      <ul style="padding-left: 18px; margin: 0 0 6px 0; font-size: 0.85rem; line-height: 1.2;"> 
+       <li>Pendapatan harian: Rp41,000</li> 
+       <li>Total: Rp1,640,000</li> 
+       <li>Durasi: 40 hari</li> 
+      </ul> 
+      <button class="btn" style="background-color: #ff7f50; font-size: 0.8rem; color: white; padding: 0.2px 12px; border: none; border-radius: 4px; cursor: pointer;" onclick="if (!window.__cfRLUnblockHandlers) return false; location.href='https://m-asento.com/purchase/confirmation/64'"><button class="btn-loading">Beli Sekarang</button></button> 
+     </div> 
+    </div> 
+    <div class="card" style="display: flex; gap: 12px; margin-bottom: 14px; padding: 8px; border: 1px solid #ddd; border-radius: 8px; align-items: center;"> 
+     <!-- Gambar Produk --> 
+     <div class="image" style="flex-shrink: 0;"> 
+      <img src="Market.jpg" alt="Produk" style="width: 55px; height: 80px; object-fit: cover; border-radius: 6px;"> 
+     </div> 
+     <!-- Detail Produk --> 
+     <div class="content" style="flex-grow: 1;"> 
+      <div class="price" style="font-size: 0.95rem; color: #e84118; font-weight: bold; text-align: left; margin-bottom: 4px;">
+        Rp3,000,000
+      </div> 
+      <ul style="padding-left: 18px; margin: 0 0 6px 0; font-size: 0.85rem; line-height: 1.2;"> 
+       <li>Pendapatan harian: Rp150,000</li> 
+       <li>Total: Rp4,050,000</li> 
+       <li>Durasi: 40 hari</li> 
+      </ul> 
+      <button class="btn" style="background-color: #ff7f50; font-size: 0.8rem; color: white; padding: 0.1px 12px; border: none; border-radius: 4px; cursor: pointer;" onclick="if (!window.__cfRLUnblockHandlers) return false; location.href='https://m-asento.com/purchase/confirmation/65'"><button class="btn-loading">Beli Sekarang</button></button> 
+     </div> 
+    </div> 
+   </div> 
+   <!-- Produk Premium --> 
+   <div class="cards product-section" id="produk-premium" style="display: none;"> 
+   </div> 
+  </div> 
+  <!-- Modal --> 
+  <div id="telegramModall" class="modal"> 
+   <div class="modal-content"> 
+    <span class="close" onclick="if (!window.__cfRLUnblockHandlers) return false; closeModal()">x</span> 
+    <h2>Gabung Grup Resmi</h2> 
+    <p>Dapatkan update terbaru, diskusi komunitas, dan informasi eksklusif dari <h3>Market Today</h3> .</p> 
+    <a href="https://whatsapp.com/channel/0029VaB9GQNHgZWfA7NUgM1P" target="_blank">Gabung Sekarang</a> 
+   </div> 
+  </div> 
+  <style>.modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.7);
+    }
+
+    .modal-content {
+      background-color: #fff;
+      margin: 15% auto;
+      padding: 30px;
+      border-radius: 10px;
+      width: 80%;
+      max-width: 350px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+
+    .modal-content h2 {
+      margin-top: 0;
+      color: #333;
+    }
+
+    .modal-content p {
+      color: #555;
+    }
+
+    .modal-content a {
+      display: inline-block;
+      margin-top: 15px;
+      background-color: #0088cc;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 24px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: -20px;
+      margin-right: -20px;
+    }
+
+    @media (max-width: 500px) {
+      .modal-content {
+        margin-top: 30%;
+      }
+    }</style> 
+  <script type="text/javascript">
+  window.onload = function () {
+    // Cek apakah modal sudah pernah ditampilkan
+    if (!sessionStorage.getItem('telegramModalShown')) {
+      const modal = document.getElementById('telegramModall');
+      modal.style.display = 'block';
+
+      // Tutup otomatis setelah 1 menit (60000 ms)
+      setTimeout(function () {
+        modal.style.display = 'none';
+      }, 2200); // Ganti 60000 = 1 menit
+
+      // Set flag agar tidak ditampilkan lagi selama sesi ini
+      sessionStorage.setItem('telegramModalShown', 'true');
+    }
+  };
+
+  function closeModal() {
+    document.getElementById('telegramModall').style.display = 'none';
+  }
+</script> 
+  <!-- Footer Navigation --> 
+  <nav class="footer-nav"> 
+   <a href="index.html" class="active"> 
+    <svg viewbox="0 0 24 24">
+     <path d="M3 12l9-9 9 9h-3v9h-12v-9H3z"></path>
+    </svg> Rumah </a> 
+   <a href="Tim saya.html"> 
+    <svg viewbox="0 0 24 24">
+     <path d="M16 11c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 3-1.34 3-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.67 0-8 1.34-8 4v3h8v-3c0-1.1.9-2 2-2h2c1.1 0 2 .9 2 2v3h8v-3c0-2.66-5.33-4-8-4H8z"></path>
+    </svg> Tim Saya </a> 
+   <a href="Akun.html"> 
+    <svg viewbox="0 0 24 24">
+     <path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"></path>
+     <circle cx="12" cy="12" r="3"></circle>
+    </svg> Akun </a> 
+  </nav> 
+  
+  <!-- JavaScript --> 
+  <!-- --> 
+  <!--<script type="text/javascript">
+    const tabs = document.querySelectorAll('.tab-btn');
+    const sections = document.querySelectorAll('.product-section');
+
+    // Initial setup: Make sure the first tab and its content are displayed
+    document.addEventListener('DOMContentLoaded', function () {
+      const firstTab = tabs[0];
+      const firstSection = document.getElementById(firstTab.dataset.tab);
+      firstTab.classList.add('active');
+      firstSection.style.display = 'grid'; // Make sure the first section is shown initially
+    });
+
+    // Handle tab switching
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        // Remove active state from all tabs and hide all sections
+        tabs.forEach(t => t.classList.remove('active'));
+        sections.forEach(s => s.style.display = 'none');
+
+        // Activate clicked tab and show the corresponding section
+        tab.classList.add('active');
+        const target = document.getElementById(tab.dataset.tab);
+        target.style.display = 'grid';
+      });
+    });
+     
+window.addEventListener('load', function() {
+  const modal = document.getElementById('telegramModal');
+  modal.style.display = 'flex';
+});
+function closeModal() {
+  document.getElementById('telegramModal').style.display = 'none';
+}
+
+        function openBuyModal(id, name, dailyIncome, validity, profit, srcImg) {
+            document.querySelector('#buyLay').style.display = 'block';
+            document.querySelector('#buyBox').style.opacity = '1';
+
+            document.querySelector('.vv').innerHTML = name;
+            document.querySelector('.dd').innerHTML = dailyIncome;
+            document.querySelector('.vdl').innerHTML = validity + " Hari";
+            document.querySelector('.prf').innerHTML = profit;
+            document.querySelector('.viewImg').src = srcImg;
+
+            document.querySelector('input[name="id"]').value = id;
+        }
+
+        function closeBuyModal() {
+            document.querySelector('#buyLay').style.display = 'none';
+            document.querySelector('#buyBox').style.opacity = '0';
+        }
+
+        function buyConfirm() {
+            closeBuyModal();
+            const id = document.querySelector('input[name="id"]').value;
+            window.location.href = 'https://m-asento.com/purchase/confirmation/' + id;
+        }
+    </script>--> 
+  <div class="van-toast van-toast--middle van-toast--loading" style="z-index: 2005; display: none;"> 
+   <div class="van-loading van-loading--circular van-toast__loading">
+    <span class="van-loading__spinner van-loading__spinner--circular">
+     <svg viewbox="25 25 50 50" class="van-loading__circular">
+      <circle cx="50" cy="50" r="20" fill="none"></circle>
+     </svg></span>
+   </div> 
+  </div> 
+  <link rel="stylesheet" href="https://m-asento.com/public/msg/notifIt.css"> 
+  <!-- --> 
+  <!-- --> 
+  <!--<script type="text/javascript">
+    function notice(message, type=null, url=null){
+        var delay = 500000;
+        notif({
+            type: type ? type : 'success',
+            msg: message ? message : 'Empty Message',
+            position: "center",
+            opacity: 0.8,
+            time: delay
+        });
+
+        if (url){
+            setTimeout(function (){
+                document.querySelector('.van-toast--loading').style.display = 'block';
+                window.location.href=url
+            }, delay)
+        }
+    }
+</script>--> 
+  <!--<script type="text/javascript">
+    function goLink(link){
+        document.querySelector('.van-toast--loading').style.display = 'block';
+        window.location.href=link;
+    }
+
+    function loading(){
+        document.querySelector('.van-toast--loading').style.display = 'block';
+    }
+</script>--> 
+  <!--<script type="text/javascript">
+    
+    
+    
+    </script>--> 
+  <!--<script type="text/javascript">
+    function openGift() {
+        document.getElementById('giftLay').style.display = 'block';
+        document.getElementById('giftBox').style.display = 'block';
+    }
+
+    function closeGift() {
+        document.getElementById('giftLay').style.display = 'none';
+        document.getElementById('giftBox').style.display = 'none';
+    }
+
+    function submitBonus() {
+        // Your submission logic here
+    }
+
+  </script>--> 
+ </body>
+</html>
+
+
+    <!-- Produk Premium -->
+    <div id="produk-premium" class="product-section">
+        <!-- Konten pesanan akan ditampilkan di sini -->
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('.tab-btn');
+            const sections = document.querySelectorAll('.product-section');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // Remove active state dari semua tab dan sembunyikan semua section
+                    tabs.forEach(t => t.classList.remove('active'));
+                    sections.forEach(s => s.style.display = 'none');
+
+                    // Aktifkan tab yang diklik dan tampilkan section yang sesuai
+                    tab.classList.add('active');
+                    const target = document.getElementById(tab.dataset.tab);
+                    target.style.display = 'grid';
+
+                    // Jika tab pesanan diklik, tampilkan pesan tidak ada pesanan
+                    if (tab.dataset.tab === 'produk-premium') {
+                        target.innerHTML = '<p style="text-align: center; padding: 50px;">Tidak ada Pesanan.</p>';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+  const buttons = document.getElementsByClassName('btn-loading');
+
+  for (let i = 0; i < buttons.length; i++) {
+    buttons[i].addEventListener('click', function() {
+      Swal.fire({
+        title: 'Sedang memperoses...',
+        text: 'Mohon tunggu sebentar',
+        allowOutsideClick: false,
+        showConfirmButton: false,
+        didOpen: () => {
+          Swal.showLoading()
+        }
+      })
+
+      // Simulasi proses loading selama 2 detik
+      setTimeout(() => {
+        Swal.close()
+        Swal.fire({
+          title: 'Pembelian Gagal!',
+          text: 'Saldo anda tidak Cukup!',
+          icon: 'error',
+          confirmButtonText: 'OK'
+        })
+      }, 2000)
+    });
+  }
+</script>
